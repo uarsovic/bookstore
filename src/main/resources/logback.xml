@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <!-- tames Spring logging -->
+    <logger name="org.springframework" level="WARN"/>
+    <!-- tames logs -->
+    <logger name="angus.activation" level="INFO"/>
+    <logger name="com.mchange" level="INFO"/>
+    <logger name="com.zaxxer.hikari" level="INFO"/>
+    <logger name="jakarta" level="INFO"/>
+    <logger name="jdk.event" level="INFO"/>
+    <logger name="javax.management" level="INFO"/>
+    <logger name="org.apache" level="INFO"/>
+    <logger name="org.flywaydb" level="INFO"/>
+    <logger name="org.hibernate" level="INFO"/>
+    <logger name="org.jboss" level="INFO"/>
+    <logger name="org.postgresql" level="INFO"/>
+    <logger name="org.quartz" level="INFO"/>
+    <logger name="sun.net.www" level="INFO"/>
+    <logger name="sun.rmi" level="INFO"/>
+
+    <root level="DEBUG">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+
+</configuration>

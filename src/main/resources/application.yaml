@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: bookstore
+  profiles:
+    active: ${PROFILE:default}
+  datasource:
+    hikari:
+      schema: bookstore
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/bookstore}
+    password: ${DB_PASSWORD:root1234}
+    username: ${DB_USER:root}
+    driver-class-name: org.postgresql.Driver
+  flyway:
+    schemas: bookstore
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${AUTH_SERVER_URL:http://localhost:8083/realms/bookstore}
+          jwk-set-uri: ${spring.security.oauth2.resource-server.jwt.issuer-uri}/protocol/openid-connect/certs
+server:
+  port: ${SERVER_PORT:8080}
+management:
+  server:
+    port: ${MANAGEMENT_PORT:9090}

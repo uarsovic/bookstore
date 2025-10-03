@@ -29,7 +29,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource
 
 @Configuration
 @EnableWebSecurity
-@Profile("!test")
+@Profile("default")
 class SecurityConfig {
 
     @Value("\${spring.security.oauth2.resource-server.jwt.jwk-set-uri}")
