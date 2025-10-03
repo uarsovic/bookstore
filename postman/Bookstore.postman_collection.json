@@ -144,14 +144,14 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/book/2ec688bf-ed77-49d3-905f-cb0651cfbeec",
+					"raw": "localhost:8080/book/3c7e6e73-ea4f-4279-bcff-778477e45461",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"book",
-						"2ec688bf-ed77-49d3-905f-cb0651cfbeec"
+						"3c7e6e73-ea4f-4279-bcff-778477e45461"
 					]
 				}
 			},
@@ -174,7 +174,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"title\": \"Awesome Book\",\n    \"price\": 100.00,\n    \"authors\": [\n        {\n            \"id\": \"d5dd6c3a-d350-4de9-9a19-732f6c3963e1\",\n            \"name\": \"Agatha Christie\"\n        }\n    ],\n    \"genre\": {\n        \"id\": \"97018722-299b-45d7-ae8b-b8641d712e66\",\n        \"name\": \"Fantasy\"\n    }\n}",
+					"raw": "{\n    \"title\": \"Awesome Book\",\n    \"price\": 100.00,\n    \"authors\": [\n        {\n            \"id\": \"d5dd6c3a-d350-4de9-9a19-732f6c3963e1\",\n            \"name\": \"Agatha Christie\"\n        }\n    ],\n    \"genre\": {\n        \"id\": \"f1f78257-b3c2-4229-a541-5ebcfc67b8af\",\n        \"name\": \"Fantasy\"\n    }\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -196,6 +196,22 @@
 		},
 		{
 			"name": "User Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if (pm.response.code == 200) {",
+							"    var jsonData = pm.response.json();",
+							"    pm.environment.set(\"token\", jsonData.access_token);",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -311,6 +327,42 @@
 					"port": "8080",
 					"path": [
 						"book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Book By Id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \"id\": \"eaacbc06-021b-44a6-947d-bfc4107ca342\",\n    \"title\": \"Awesome Book\",\n    \"price\": 100.00,\n    \"authors\": [\n        {\n            \"id\": \"d5dd6c3a-d350-4de9-9a19-732f6c3963e1\",\n            \"name\": \"Agatha Christie\"\n        }\n    ],\n    \"genre\": {\n        \"id\": \"97018722-299b-45d7-ae8b-b8641d712e66\",\n        \"name\": \"Fantasy\"\n    }\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/book/7af15ffa-3474-4a38-85ea-fc0d15a6dbdc",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"book",
+						"7af15ffa-3474-4a38-85ea-fc0d15a6dbdc"
 					]
 				}
 			},
