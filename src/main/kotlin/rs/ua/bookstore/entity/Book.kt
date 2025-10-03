@@ -33,6 +33,7 @@ class Book(
     val title: String,
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "genre_id", nullable = false)
     val genre: Genre,
 
     @ManyToMany

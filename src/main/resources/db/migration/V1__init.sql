@@ -29,5 +29,6 @@ CREATE TABLE bookstore.book_authors (
     book_id uuid DEFAULT gen_random_uuid() NOT NULL
 );
 
+ALTER TABLE bookstore.book ADD CONSTRAINT uq_book_genre_id FOREIGN KEY (genre_id) REFERENCES bookstore.genre(id);
 ALTER TABLE bookstore.book_authors ADD CONSTRAINT uq_book_authors_author_id FOREIGN KEY (author_id) REFERENCES bookstore.author(id);
 ALTER TABLE bookstore.book_authors ADD CONSTRAINT uq_book_authors_book_id FOREIGN KEY (book_id) REFERENCES bookstore.book(id);
